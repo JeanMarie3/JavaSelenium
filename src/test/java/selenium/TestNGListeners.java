@@ -51,8 +51,8 @@ public class TestNGListeners {
         //Initiating your chromedriver
         //WebDriver driver = new ChromeDriver();
         driver = new ChromeDriver();
-
-        driver.get("https://www.google.com");
+        driver.get(baseUrl);
+        //driver.get("https://www.google.com");
         TimeUnit.SECONDS.sleep(10);
         //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         //element = driver.findElement(By.id("lst-ib"));
