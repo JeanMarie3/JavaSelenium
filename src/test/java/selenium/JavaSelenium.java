@@ -12,34 +12,25 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 @Listeners(TypesListeners.class)
-public class TestNGListeners {
+public class JavaSelenium {
     private WebDriver driver;
     private String baseUrl;
     private WebElement element;
-    WebElement button;
-
+    private WebElement button;
     @BeforeMethod
     public void setUp() throws Exception {
         //New webdriver access
         WebDriverManager.chromedriver().setup();
         WebDriverManager.firefoxdriver().setup();
 
-
         //Old webdriver access
         //System.setProperty("webdriver.gecko.driver", "C:\\Users\\klamnlo\\Downloads\\geckodriver-v0.29.1-win64\\geckodriver.exe");
 
-        //Initializing webdriver for browser
-        //driver = new FirefoxDriver();
-
         baseUrl = "https://www.google.com";
-        //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
-
     }
 
     @Test(priority = 1)
@@ -72,13 +63,6 @@ public class TestNGListeners {
         WebElement element=driver.findElement(By.xpath("//input[@name='emailid']"));
         element.sendKeys("abc@gmail.com");
 
-        // explicit wait condition
-        //WebDriverWait explicitWait = new WebDriverWait(driver,30);
-
-        // presenceOfElementLocated condition
-        //explicitWait.until(ExpectedConditions.presenceOfElementLocated (By.cssSelector("h1")));
-        //explicitWait.until(ExpectedConditions.presenceOfElementLocated (By.name("btnLogin")));
-
         // Initialize and wait till element(link) became clickable - timeout in 10 seconds
         WebElement button = new WebDriverWait(driver, Duration.ofSeconds(30))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='btnLogin']")));
@@ -93,6 +77,25 @@ public class TestNGListeners {
         //Static waiting
         TimeUnit.SECONDS.sleep(3);
         driver.quit();
+
+    }
+
+    @Test(priority = 1, enabled=true)
+    public void GithubLoginDemo() throws Exception {
+
+        driver.get("https://github.com/login");
+        WebElement element=driver.findElement(By.id("login_field"));
+        element.sendKeys("abc@gmail.com");
+
+        WebElement element_password=driver.findElement(By.id("password"));
+        element_password.sendKeys("abc@gmail.com");
+
+        WebElement button=driver.findElement(By.xpath("//*[@id='login']/div[4]/form/div/input[12]"));
+        button.click();
+        //Example Of Implicit Wait Command
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //Static waiting
+        TimeUnit.SECONDS.sleep(10);
 
     }
 
@@ -112,56 +115,3 @@ public class TestNGListeners {
 
 
 }
-
-/*
-    @Test()
-    public static void main(String[] args) throws ClassNotFoundException {
-        TestNG test = new TestNG();
-        test.setTestClasses(new Class[] { ImplicitWaitTest.class });
-        test.run();
-    } */
-/*
-        / identify element
-      WebElement p=driver.findElement(By.name("q"));
-      //enter text with sendKeys() then apply submit()
-      p.sendKeys("Selenium Java");
-
-        // Explicit wait condition for search results
-      WebDriverWait w = new WebDriverWait(driver, 5);
-      w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ul")));
-
-        element = driver.findElement(By.className("gLFyf.gsfi"));
-        element = driver.findElement(By.className("gLFyf gsfi"));
-        button.click();
-        element = driver.findElement(By.className("VfPpkd-vQzf8d"));
-        button.click();
-        element = driver.findElement(By.className("fake-editable"));
-
-        element.sendKeys("Selenium WebDriver Interview questions");
-        element.sendKeys(Keys.RETURN);
-        List<WebElement> list = driver.findElements(By.className("_Rm"));
-        System.out.println(list.size());
-2. Test case
-        // get the number of pages
-   int size = driver.findElements(By.cssSelector("[valign='top'] > td")).size();
-   for(int j = 1 ; j < size ; j++) {
-       if (j > 1) {// we don't need to navigate to the first page
-           driver.findElement(By.cssSelector("[aria-label='Page " + j + "']")).click(); // navigate to page number j
-       }
-
-       String pagesearch = driver.getCurrentUrl();
-
-       List<WebElement> findElements = driver.findElements(By.xpath("//*[@id='rso']//h3/a"));
-       System.out.println(findElements.size());
-
-       for(int i=0;i<findElements.size();i++){
-           findElements= driver.findElements(By.xpath("//*[@id='rso']//h3/a"));
-           findElements.get(i).click();
-
-           driver.navigate().to(pagesearch);
-           JavascriptExecutor jse = (JavascriptExecutor) driver;
-           //Scroll vertically downward by 250 pixels
-           jse.executeScript("window.scrollBy(0,250)", "");
-       }
-   }
-        */
