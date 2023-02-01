@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ImplicitWaitTest.iml" filepath="$PROJECT_DIR$/ImplicitWaitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaSeleniumPlaywrightTestNG.iml" filepath="$PROJECT_DIR$/JavaSeleniumPlaywrightTestNG.iml" />
     </modules>
   </component>
 </project>
