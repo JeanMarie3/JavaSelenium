@@ -1,6 +1,9 @@
+package selenium;
+
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+
     public class TypesListeners implements ITestListener {
 
         // This belongs to ITestListener and will execute before starting of Test set/batch
