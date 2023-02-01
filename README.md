@@ -1,2 +1,2 @@
-# SeleniumTestNGTestCases
+# JavaSeleniumPlaywrightTestNG
 JavaSeleniumPlaywrightTestNG
