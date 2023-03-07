@@ -12,5 +12,7 @@ public interface TestCases {
     void PopupAlertWindowHandling();
 
     void PrintCookie();
+    void OtherSeleniumFeatures();
 
+    void urls(String url);
 }
