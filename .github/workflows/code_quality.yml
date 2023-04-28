@@ -1,0 +1,20 @@
+name: 'Qodana Scan'
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+
+jobs:
+  qodana-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Qodana Scan'
+        uses: JetBrains/qodana-action@main
+        with:
+          token: ${{ env.QODANA_TOKEN }}
